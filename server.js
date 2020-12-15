@@ -4,7 +4,7 @@ const app = express();
 const PORT = 5000;
 
 
-app.use(express.static(path.join(__filename, './index.html')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 const http = require('http').createServer(app);
 
@@ -17,6 +17,10 @@ io.on('connect',socket=>{
 
     socket.on('nameConfig',(e)=>{
         socket.name = e;
+
+        socket.emit("setName",e);
+
+        socket.broadcast.emit('newJoin',e);
     })
 
     socket.on('getCounter',()=>{

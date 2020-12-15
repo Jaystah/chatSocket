@@ -3,33 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chat system</title>
+    <link rel="stylesheet" href="app.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <div style="text-align: center; margin-top: 200px;">
-    <input type="text" id="msg" placeholder="Type je bericht"/>
-    <button onclick="sendMessage(document.getElementById('msg').value)">Verstuur!</button>
+    <div id="name"></div>
+
+<div class="row sendForm">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mail</i>
+          <input id="msg" type="text" placeholder="Type je bericht" class="validate">
+        </div>
+        <button class="btn waves-effect waves-light mainButton" onclick="sendMessage(document.getElementById('msg').value)" name="action">Submit
+            <i class="material-icons right">send</i>
+          </button>
+      </div>
+  </div>
+        
+
+  <div class="row allMsg">
+    <div class="col s12 m6">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title" style="text-align: center;">Messages</span>
+          <div id="messages">
+
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="messages">
-        <h1>Messages:</h1>
-    </div>
+  </div>
     <p id="count"><!--people online--></p>
 </body>
-<style>
-    input{
-        border-radius: 20px;
-    }
-    *{
-        font-family: Arial, Helvetica, sans-serif;
-
-    }
-    #messages{
-    text-align: center;
-    border: 1px solid black;
-    padding: 15px 5px 15px 5px;
-        border-radius: 10px;
-    }
-</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script rel="preload" src="app.js"></script>
 </html>

@@ -1,0 +1,48 @@
+
+
+#name{
+    position: absolute ;
+    right: 20px;
+    top: 20px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+input{
+    border-radius: 20px;
+}
+*{
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+.msgName{
+    color:chocolate;
+}
+.sendForm{
+    margin-left: 32.5% !important;
+}
+.allMsg{
+    margin-left: 36.5% !important;
+}
+.mainButton{
+    margin-top: 25px;
+}
+
+.row{
+    margin: 150px auto;
+}
+#messages{
+text-align: center;
+padding: 15px 5px 15px 5px;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .sendForm{
+        margin-left: 12.5% !important;
+    }
+    .allMsg{
+        margin-left: 0% !important;
+        margin-top: -20% !important; 
+    }
+  }
