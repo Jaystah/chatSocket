@@ -4,7 +4,7 @@ const app = express();
 const PORT = 5000;
 
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__filename, './index.html')))
 
 const http = require('http').createServer(app);
 
