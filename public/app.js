@@ -7,11 +7,12 @@ socket.on('setName',obj=>{
 })
 do{
     name2 = prompt('Geef je naam')
-}while(!name2)
+}while(!name2);
 
 M.toast({html: `Welcome ${name2}!`, classes: 'rounded'});
 setTimeout(socket.emit('nameConfig',name2),4000);
 const sendMessage = (msg)=>{
+    if(msg){
 document.getElementById('msg').value = "";
 display({
     message: msg,
@@ -24,6 +25,7 @@ let mess= {
 }
 
 socket.emit('newMsg',mess);
+}
 }
 
 
@@ -88,3 +90,44 @@ document.addEventListener('keyup', (e) => {
         div.removeChild(div.firstChild); 
     } 
 } 
+
+socket.on('playGhetto',()=>{
+   if(document.getElementById('ghetto').paused) 
+    playGhetto();
+})
+socket.on('pauseGhetto',()=>{
+   if(!document.getElementById('ghetto').paused) 
+    pauseGhetto();
+})
+socket.on('playKurt',()=>{
+   if(document.getElementById('kurt').paused) 
+    playKurt();
+})
+socket.on('pauseKurt',()=>{
+   if(!document.getElementById('kurt').paused) 
+    pauseKurt();
+})
+
+const playGhetto = ()=>{
+    document.getElementById('ghetto').play();
+    socket.emit('getTime',(document.getElementById('ghetto').currentTime,document.getElementById('kurt').currentTime))
+    socket.emit('playGhetto');
+}
+const pauseGhetto = ()=>{
+    document.getElementById('ghetto').pause();
+    socket.emit('pauseGhetto')
+}
+const playKurt = ()=>{
+    document.getElementById('kurt').play();
+    socket.emit('getTime',(document.getElementById('ghetto').currentTime,document.getElementById('kurt').currentTime))
+    socket.emit('playKurt')
+}
+const pauseKurt = ()=>{
+    document.getElementById('kurt').pause();
+    socket.emit('pauseKurt')
+}
+
+
+
+
+

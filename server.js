@@ -10,12 +10,15 @@ const http = require('http').createServer(app);
 
 let counter = 0;
 let people = [];
+
+let timeBitteGeh = 0;
+let timeKurt = 0;
 const io = require('socket.io')(http);
 io.on('connect',socket=>{
     counter++;
     io.emit('onliners',counter);
     socket.emit('onliners',counter);
-
+    console.log(timeBitteGeh,timeKurt);
     socket.on('nameConfig',(e)=>{
         socket.name = e;
 
@@ -44,7 +47,24 @@ io.on('connect',socket=>{
         io.emit('allPeople',people);
     });
 
+    // io.on('getTime',(bitte,kurt)=>{
+    //     timeBitteGeh = bitte;
+    //     timeKurt = kurt;
+    //     console.log(timeBitteGeh,timeKurt)
+    // })
 
+    socket.on('playGhetto',()=>{
+        socket.broadcast.emit('playGhetto')
+    })
+    socket.on('pauseGhetto',()=>{
+        socket.broadcast.emit('pauseGhetto')
+    })
+    socket.on('playKurt',()=>{
+        socket.broadcast.emit('playKurt')
+    })
+    socket.on('pauseKurt',()=>{
+        socket.broadcast.emit('pauseKurt')
+    })
 })
 
 

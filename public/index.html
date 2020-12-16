@@ -9,7 +9,17 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+    <div id="music">
+    <a onclick="playGhetto()" class="waves-effect waves-light btn-small">Play Ghetto</a>&nbsp;<a class="waves-effect waves-light btn-small" onclick="pauseGhetto()">Pause Ghetto</a><br><br>
+    <a onclick="playKurt()" class="waves-effect waves-light btn-small">Play Kurt Cobain</a>&nbsp;<a class="waves-effect waves-light btn-small" onclick="pauseKurt()">Pause Kurt Cobain</a>
+    <audio id="ghetto">
+        <source src="meroBitteGeh.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="kurt">
+        <source src="meroKurt.mp3" type="audio/mpeg">
+    </audio>
     <div id="name"></div>
+    </div>
 
 <div class="row sendForm">
       <div class="row">
