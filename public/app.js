@@ -112,19 +112,25 @@ const playGhetto = ()=>{
     document.getElementById('ghetto').play();
     socket.emit('getTime',(document.getElementById('ghetto').currentTime,document.getElementById('kurt').currentTime))
     socket.emit('playGhetto');
+    document.getElementById('playKurtButton').classList.add('disabled')
+
 }
 const pauseGhetto = ()=>{
     document.getElementById('ghetto').pause();
     socket.emit('pauseGhetto')
+    document.getElementById('playKurtButton').classList.remove('disabled')
+
 }
 const playKurt = ()=>{
     document.getElementById('kurt').play();
     socket.emit('getTime',(document.getElementById('ghetto').currentTime,document.getElementById('kurt').currentTime))
     socket.emit('playKurt')
+    document.getElementById('playGhettoButton').classList.add('disabled')
 }
 const pauseKurt = ()=>{
     document.getElementById('kurt').pause();
     socket.emit('pauseKurt')
+    document.getElementById('playGhettoButton').classList.remove('disabled')
 }
 
 
