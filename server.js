@@ -9,6 +9,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 const http = require('http').createServer(app);
 
 let counter = 0;
+let people = [];
 const io = require('socket.io')(http);
 io.on('connect',socket=>{
     counter++;
@@ -21,6 +22,10 @@ io.on('connect',socket=>{
         socket.emit("setName",e);
 
         socket.broadcast.emit('newJoin',e);
+
+        people.push(e);
+
+        io.emit('allPeople',people)
     })
 
     socket.on('getCounter',()=>{
@@ -35,10 +40,14 @@ io.on('connect',socket=>{
         counter--;
         socket.broadcast.emit('left',socket.name ? socket.name :'Someone');
         io.emit('onliners',counter)
+        people.splice(people.indexOf(socket.name),1)
+        io.emit('allPeople',people);
     });
 
 
 })
+
+
 
 
 

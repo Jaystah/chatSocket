@@ -1,6 +1,6 @@
 const socket = io();
 
-
+let allpeople = [];
 let name2;
 socket.on('setName',obj=>{
     document.getElementById('name').innerText = `Name: ${obj}`;
@@ -45,6 +45,18 @@ socket.on('onliners',amount=>{
 })
 
 
+socket.on('allPeople',object=>{
+    if(allpeople != object){
+        clearBox('people');
+    object.forEach((i)=>{
+       let p = document.createElement('li');
+       p.innerHTML = i;
+       p.className = "collection-item";
+       document.getElementById('people').prepend(p);
+    })
+}
+})
+
 socket.on('newJoin',obj=>{
     M.toast({html: `${obj} joined the party!`, classes: 'rounded'});
 })
@@ -68,3 +80,11 @@ document.addEventListener('keyup', (e) => {
     if (e.keyCode === 13)      
         sendMessage(document.getElementById('msg').value);
   });
+
+  function clearBox(elementID) { 
+    var div = document.getElementById(elementID); 
+      
+    while(div.firstChild) { 
+        div.removeChild(div.firstChild); 
+    } 
+} 
