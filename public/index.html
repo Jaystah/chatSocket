@@ -1,58 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat system</title>
-    <link rel="stylesheet" href="app.css"/>
+    <link rel="stylesheet" href="app.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+
 <body>
     <div id="music">
-    <a id="playGhettoButton" onclick="playGhetto()" class="waves-effect waves-light btn-small">Play Bitte Geh</a>&nbsp;<a id="pauseGhettoButton" class="waves-effect waves-light btn-small" onclick="pauseGhetto()">Pause Bitte Geh</a><br><br>
-    <a id="playKurtButton" onclick="playKurt()" class="waves-effect waves-light btn-small">Play Kurt Cobain</a>&nbsp;<a id="pauseKurtButton" class="waves-effect waves-light btn-small" onclick="pauseKurt()">Pause Kurt Cobain</a>
-    <audio id="ghetto">
-        <source src="meroBitteGeh.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="kurt">
-        <source src="meroKurt.mp3" type="audio/mpeg">
-    </audio>
-    <div id="name"></div>
+
+        <table>
+            <colgroup>
+                <col span="1" style="width: 15%;">
+                <col span="1" style="width: 70%;">
+            </colgroup>
+
+            <tbody>
+                <tr>
+                    <td> <a id="playGhettoButton" onclick="playGhetto()" class="waves-effect waves-light btn-small">Play
+                            Bitte Geh</a></td>
+                    <td><a id="pauseGhettoButton" class="waves-effect waves-light btn-small"
+                            onclick="pauseGhetto()">Pause Bitte Geh</a></td>
+                </tr>
+                <tr>
+                    <td><a id="playKurtButton" onclick="playKurt()" class="waves-effect waves-light btn-small">Play Kurt
+                            Cobain</a></td>
+                    <td><a id="pauseKurtButton" class="waves-effect waves-light btn-small" onclick="pauseKurt()">Pause
+                            Kurt Cobain</a></td>
+                </tr>
+            </tbody>
+            <audio id="ghetto">
+                <source src="meroBitteGeh.mp3" type="audio/mpeg">
+            </audio>
+            <audio id="kurt">
+                <source src="meroKurt.mp3" type="audio/mpeg">
+            </audio>
+        </table>
+        <div id="name"></div>
     </div>
 
-<div class="row sendForm">
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">mail</i>
-          <input id="msg" type="text" placeholder="Type je bericht" class="validate">
+    <div class="row sendForm">
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">mail</i>
+                <input id="msg" type="text" placeholder="Type je bericht" class="validate">
+            </div>
+            <button class="btn waves-effect waves-light mainButton"
+                onclick="sendMessage(document.getElementById('msg').value)" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
         </div>
-        <button class="btn waves-effect waves-light mainButton" onclick="sendMessage(document.getElementById('msg').value)" name="action">Submit
-            <i class="material-icons right">send</i>
-          </button>
-      </div>
-  </div>
-        
-
-  <div class="row allMsg">
-    <div class="col s12 m6">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title" style="text-align: center;">Messages</span>
-          <div id="messages">
-
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <b id="count"><!--people online--></b>
-  <ul id="people" class="collection">
-  </ul>
-    
+
+    <div class="row allMsg">
+        <div class="col s12 m6">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title" style="text-align: center;">Messages</span>
+                    <div id="messages">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <b id="count">
+        <!--people online-->
+    </b>
+    <ul id="people" class="collection">
+    </ul>
+
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script rel="preload" src="app.js"></script>
+
 </html>
