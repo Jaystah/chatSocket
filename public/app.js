@@ -135,7 +135,9 @@ const pauseKurt = () => {
     document.getElementById('playGhettoButton').classList.remove('disabled')
 }
 
-
+const goTo = (link) => {
+    window.open(link);
+}
 
 
 if(a>b){
